@@ -1,3 +1,6 @@
+@section( 'chinaaddress', $config->address )
+@section( 'title_text', $config->title_text )
+@section( 'address_two', $config->address_two )
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
