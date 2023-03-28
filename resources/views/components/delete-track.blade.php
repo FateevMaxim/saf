@@ -13,14 +13,14 @@
             <!-- Modal header -->
             <div class="justify-between bg-[#313131] text-center p-4 border-b rounded-t ">
                 <h3 class="text-xl font-semibold text-white">
-                    {{env('APP_ENV')}} {{$track->track_code}}
+                    {{$track->track_code}}
                 </h3>
             </div>
             <!-- Modal body -->
             <div class="p-6 text-center space-y-6">
                 <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
                     Внимание!!!<br />
-                    Удалить трек код
+                    Удалить трек код?
                 </p>
             </div>
             <form method="POST" action="{{ route('delete-track') }}">
