@@ -132,6 +132,21 @@ class ProductController extends Controller
     }
 
 
+    public function deleteTrack (Request $request)
+    {
+        $validated = $request->validate([
+            'delete_track' => 'required|string|max:100',
+        ]);
+
+        if ($validated){
+            $archive = ClientTrackList::query()->where('track_code', $request['delete_track'])->first();
+            $archive->status = 'deleted';
+            $archive->save();
+            return redirect()->back()->with('message', 'Трек код успешно удалён');
+        }
+
+    }
+
     public function archiveProduct (Request $request)
     {
         $validated = $request->validate([

@@ -119,6 +119,9 @@
                                     @if(Route::currentRouteName() != 'archive')
                                     <div class="flex flex-row-reverse col-span-1">
                                         <li class="mr-4">
+                                        @include('components.delete-track')
+                                        </li>
+                                        <li class="mr-4">
                                             <form method="POST" action="{{ route('client-product-archive') }}">
                                                 @csrf
                                                 <x-text-input type="hidden" name="archive_track" value="{{$track->track_code}}" />
@@ -132,6 +135,9 @@
                                     </div>
                                         @elseif(Route::currentRouteName() === 'archive')
                                         <div class="flex flex-row-reverse col-span-1">
+                                            <li class="mr-4">
+                                                @include('components.delete-track')
+                                            </li>
                                             <li class="mr-4">
                                                 <form method="POST" action="{{ route('client-product-unarchive') }}">
                                                     @csrf
