@@ -17,8 +17,11 @@ class AuthenticatedSessionController extends Controller
     /**
      * Display the login view.
      */
-    public function create(): View
+    public function create(): View | RedirectResponse
     {
+        if (Auth::user() && Auth::user()->getRememberToken()){
+            return redirect()->route('dashboard');
+        }
         $config = Configuration::query()->select('whats_app')->first();
         return view('auth.login')->with(compact( 'config'));
     }
@@ -45,6 +48,8 @@ class AuthenticatedSessionController extends Controller
             ->where('is_active', true)
             ->first();
         if ($user){
+            $user->login_date = date(now());
+            $user->save();
             return redirect()->route('dashboard');
         }else{
             $config = Configuration::query()->select('address', 'whats_app')->first();
